@@ -1,0 +1,35 @@
+{
+  "runtime": "k3s-hetzner",
+  "app_name": "rhtc",
+  "path": "/",
+  "domain": "rhtcnajafgarh.in",
+  "resources": {
+    "cpu": "200m",
+    "memory": "256Mi"
+  },
+  "scaling": {
+    "type": "cpu",
+    "min": 1,
+    "max": 3,
+    "target": 70
+  },
+  "mongo": {
+    "enabled": true,
+    "database": "rhtc",
+    "uri_env": "MONGO_URI",
+    "read_preference": "primary",
+    "max_pool_size": 20,
+    "min_pool_size": 5
+  },
+  "secrets_from": "BYTEINFY_RHTC_SECRETS",
+  "env_vars": {
+    "NODE_ENV": "production",
+    "BASE_URL": "https://rhtcnajafgarh.in",
+    "CHROME_PATH": "/usr/bin/chromium",
+    "SITE_MAIL": "noreply@rhtcnajafgarh.in",
+    "ADMIN_MAIL": "anmrhtc@gmail.com",
+    "SES_REGION": "eu-west-1",
+    "BUCKET": "rhtc",
+    "PAY_U_URL": "https://secure.payu.in/_payment"
+  }
+}

@@ -1,0 +1,26 @@
+**/node_modules
+node_modules
+
+# Source — not shipped; we use the pre-built dist/ from git
+src
+e2e
+karma.conf.js
+tslint.json
+angular.json
+ngsw-config.json
+tsconfig*.json
+
+# Git, CI, dev tooling
+.git
+.github
+.vscode
+coverage
+
+# Secrets
+.env
+.env.*
+
+# Docs and dev compose files (not needed in image)
+*.md
+scripts/
+docker-compose*.yml
