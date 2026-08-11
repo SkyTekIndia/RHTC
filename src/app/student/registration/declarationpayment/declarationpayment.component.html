@@ -1,0 +1,54 @@
+<div class="text-left bg-secondary p-2">
+  <b>DECLARATION & PAYMENT</b>
+</div>
+<form
+  role="form"
+  [formGroup]="declarationForm"
+  (ngSubmit)="onSubmit()"
+  *ngIf="this.draftForm"
+>
+  <h6 class="text-info mt-2 mb-2"><b>(Tick mark below box if agree)</b></h6>
+  <div class="row my-4">
+    <div class="col-md-12">
+      <div
+        class="
+          custom-control custom-control-alternative custom-checkbox
+          declaration-checkbox
+        "
+      >
+        <input
+          class="custom-control-input"
+          id="customCheckRegister"
+          type="checkbox"
+          formControlName="declaration"
+        />
+        <label class="custom-control-label" for="customCheckRegister">
+          <b>
+            I hereby declare that all statements made in this application are
+            complete, correct & true to the best of my knowledge and belief. I
+            understand that in the event of any information being found false /
+            incorrect at any stage, or not satisfying the eligibility criteria
+            my candidature is liable to be cancelled.
+          </b>
+        </label>
+      </div>
+    </div>
+    <div
+      *ngIf="submitted && form.declaration.errors"
+      class="text-danger mt-1 ml-4"
+    >
+      <small *ngIf="form.declaration.errors.required"
+        >This field is required</small
+      >
+    </div>
+    <div class="col-md-12 mt-4 ml-2 border">
+      <h5 class="mt-2"><b>Online fee payment gateway</b></h5>
+      <h5><b>Fee:</b></h5>
+      <h6><b>1. UR/OBC = Rs. 615/- including Bank Charges</b></h6>
+      <h6><b>2. SC/ST/PH/EWSs = Rs. 410/- including Bank Charges</b></h6>
+    </div>
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary mt-4">Make Payment</button>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-center mb-3">
+    <div class="col-md-12">
+        <div>
+            <div class="float-left font-weight-bold" *ngIf="currentUser">
+                Welcome {{ currentUser.name }}, 
+            </div>
+            <div class="p-2">
+                <button type="button" class="btn btn-primary mt-2 mb-2 float-right" (click)="onSignOut()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>

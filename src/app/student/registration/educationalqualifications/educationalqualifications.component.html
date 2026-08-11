@@ -1,0 +1,160 @@
+<div class="text-left bg-secondary p-2">
+    <h5><b>EDUCATIONAL QUALIFICATIONS</b></h5>
+</div>
+<form role="form" [formGroup]="educationalqualificationsForm" (ngSubmit)="onSubmit()">
+    <h6 class="text-primary mt-2 mb-2"><b>Details of Education - Class X</b></h6>
+    <div class="p-3" formGroupName="tenth">
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Board Name <span class="text-danger">*</span></label>
+            <select class="custom-select my-1 mr-sm-2" formControlName="board" (focus)="focus=true" (blur)="focus=false"
+                [ngClass]="{ 'is-invalid': submitted && tenth.get('board').errors }">
+                <option value="Central Board of Secondary Education (CBSE)">Central Board of Secondary Education (CBSE)
+                </option>
+                <option value="ICSE">ICSE</option>
+                <option value="National Institute of Open Schooling">National Institute of Open Schooling</option>
+            </select>
+            <div *ngIf="submitted && tenth.get('board').errors" class="text-danger mt-1">
+                <small *ngIf="tenth.get('board').errors.required">This field is required<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Year of Passing <span class="text-danger">*</span></label>
+            <select class="custom-select my-1 mr-sm-2" class="form-control" type="text" formControlName="passingYear" (focus)="focus=true"
+            (blur)="focus=false" [ngClass]="{ 'is-invalid': submitted && tenth.get('passingYear').errors }">
+                <option  *ngFor="let year of passingYears"> {{ year }} </option>
+            </select>
+            <div *ngIf="submitted && tenth.get('passingYear').errors" class="text-danger mt-1">
+                <small *ngIf="tenth.get('passingYear').errors.required">This field is required<br></small>
+                <small *ngIf="tenth.get('passingYear').errors">Year of Passing must be valid<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Marks Obtained <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" formControlName="marksObtained" (focus)="focus=true"
+                (blur)="focus=false" [ngClass]="{ 'is-invalid': submitted && tenth.get('marksObtained').errors }"
+                mask="000" (keyup)="calculatePercent('tenth')">
+            <div *ngIf="submitted && tenth.get('marksObtained').errors" class="text-danger mt-1">
+                <small *ngIf="tenth.get('marksObtained').errors.required">This field is required<br></small>
+                <small *ngIf="tenth.get('marksObtained').errors">Marks Obtained must be valid<br></small>
+                <small *ngIf="tenth.get('marksObtained').errors.invalidMarks">Marks Obtained must be less than or equal to maximum marks<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Maximum Marks <span class="text-danger">*</span></label>
+            <input class="form-control" formControlName="maximumMarks" (focus)="focus=true" (blur)="focus=false"
+                type="text" [ngClass]="{ 'is-invalid': submitted && tenth.get('maximumMarks').errors }" mask="000" (keyup)="calculatePercent('tenth')">
+            <div *ngIf="submitted && tenth.get('maximumMarks').errors" class="text-danger mt-1">
+                <small *ngIf="tenth.get('maximumMarks').errors.required">This field is required<br></small>
+                <small *ngIf="tenth.get('maximumMarks').errors">Maximum Marks must be valid<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Percentage (%) Marks <span class="text-danger">*</span></label>
+            <input class="form-control" formControlName="percentageMarks" (focus)="focus=true" (blur)="focus=false"
+                type="text" [ngClass]="{ 'is-invalid': submitted && tenth.get('percentageMarks').errors }"
+                readonly>
+            <div *ngIf="submitted && tenth.get('percentageMarks').errors" class="text-danger mt-1">
+                <small *ngIf="tenth.get('percentageMarks').errors.required">This field is required<br></small>
+                <small *ngIf="tenth.get('percentageMarks').errors.invalidPercentage">Percentage (%) Marks must be greater than 32 and less than 100<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>School Name & Location <span class="text-danger">*</span></label>
+            <input class="form-control" formControlName="schoolNameAndLocation" (blur)="focus=false" type="text"
+                [ngClass]="{ 'is-invalid': submitted && tenth.get('schoolNameAndLocation').errors }">
+            <div *ngIf="submitted && tenth.get('schoolNameAndLocation').errors" class="text-danger mt-1">
+                <small *ngIf="tenth.get('schoolNameAndLocation').errors.required">This field is required<br></small>
+            </div>
+        </div>
+    </div>
+    <h6 class="text-primary mt-2 mb-2"><b>Details of Education - Class XII</b></h6>
+    <div class="p-3" formGroupName="twelfth">
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Pass Status <span class="text-danger">*</span></label>
+            <select class="custom-select my-1 mr-sm-2" formControlName="status" (focus)="focus=true"
+                (blur)="focus=false" [ngClass]="{ 'is-invalid': submitted && twelfth.get('status').errors }">
+                <option value="Passed">Passed</option>
+                <option value="Apprearing">Apprearing</option>
+            </select>
+            <div *ngIf="submitted && twelfth.get('status').errors" class="text-danger mt-1">
+                <small *ngIf="twelfth.get('status').errors.required">This field is required<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Board Name <span class="text-danger">*</span></label>
+            <select class="custom-select my-1 mr-sm-2" formControlName="board" (focus)="focus=true" (blur)="focus=false"
+                [ngClass]="{ 'is-invalid': submitted && twelfth.get('board').errors }">
+                <option value="Central Board of Secondary Education (CBSE)">Central Board of Secondary Education (CBSE)
+                </option>
+                <option value="ICSE">ICSE</option>
+                <option value="National Institute of Open Schooling">National Institute of Open Schooling</option>
+            </select>
+            <div *ngIf="submitted && twelfth.get('board').errors" class="text-danger mt-1">
+                <small *ngIf="twelfth.get('board').errors.required">This field is required<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Year of Passing <span class="text-danger">*</span></label>
+            <select class="custom-select my-1 mr-sm-2" class="form-control" type="text" formControlName="passingYear" (focus)="focus=true"
+                (blur)="focus=false" [ngClass]="{ 'is-invalid': submitted && tenth.get('passingYear').errors }" >
+                    <option  *ngFor="let year of passingYears"> {{ year }} </option>
+                </select>
+            <div *ngIf="submitted && twelfth.get('passingYear').errors" class="text-danger mt-1">
+                <small *ngIf="twelfth.get('passingYear').errors.required">This field is required<br></small>
+                <small *ngIf="twelfth.get('passingYear').errors">Year of Passing must be valid<br></small>
+                <small *ngIf="twelfth.get('passingYear').errors.invalidYear">Year of passing must be greater than tenth year of passing<br></small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Marks Obtained <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" formControlName="marksObtained" (focus)="focus=true"
+                (blur)="focus=false" [ngClass]="{ 'is-invalid': submitted && twelfth.get('marksObtained').errors }" (keyup)="calculatePercent('twelfth')">
+            <div *ngIf="submitted && twelfth.get('marksObtained').errors" class="text-danger mt-1">
+                <small *ngIf="twelfth.get('marksObtained').errors.required">This field is required<br></small>
+                <small *ngIf="twelfth.get('marksObtained').errors">Marks Obtained must be valid<br></small>
+                <small *ngIf="twelfth.get('marksObtained').errors.invalidMarks">Marks Obtained must be less than or equal to maximum marks<br></small>
+            </div>
+            <div class="text-info mt-1">
+                <small>* Enter "NA" if not applicable</small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Maximum Marks <span class="text-danger">*</span></label>
+            <input class="form-control datepicker" formControlName="maximumMarks" (focus)="focus=true"
+                (blur)="focus=false" type="text"
+                [ngClass]="{ 'is-invalid': submitted && twelfth.get('maximumMarks').errors }" (keyup)="calculatePercent('twelfth')">
+            <div *ngIf="submitted && twelfth.get('maximumMarks').errors" class="text-danger mt-1">
+                <small *ngIf="twelfth.get('maximumMarks').errors.required">This field is required<br></small>
+                <small *ngIf="twelfth.get('maximumMarks').errors">Maximum Marks must be valid<br></small>
+            </div>
+            <div class="text-info mt-1">
+                <small>* Enter "NA" if not applicable</small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>Percentage (%) Marks <span class="text-danger">*</span></label>
+            <input class="form-control datepicker" formControlName="percentageMarks" (focus)="focus=true"
+                (blur)="focus=false" type="text"
+                [ngClass]="{ 'is-invalid': submitted && twelfth.get('percentageMarks').errors }">
+            <div *ngIf="submitted && twelfth.get('percentageMarks').errors" class="text-danger mt-1">
+                <small *ngIf="twelfth.get('percentageMarks').errors.required">This field is required<br></small>
+                <small *ngIf="twelfth.get('percentageMarks').errors.invalidPercentage">Percentage (%) Marks must be greater than 32 and less than 100<br></small>
+            </div>
+            <div class="text-info mt-1">
+                <small>* Enter "NA" if not applicable</small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'focused':focus === true}">
+            <label>School Name & Location <span class="text-danger">*</span></label>
+            <input class="form-control datepicker" formControlName="schoolNameAndLocation" (focus)="focus=true"
+                (blur)="focus=false" type="text"
+                [ngClass]="{ 'is-invalid': submitted && twelfth.get('schoolNameAndLocation').errors }">
+            <div *ngIf="submitted && twelfth.get('schoolNameAndLocation').errors" class="text-danger mt-1">
+                <small *ngIf="twelfth.get('schoolNameAndLocation').errors.required">This field is required<br></small>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-4">Save and Continue</button>
+    </div>
+</form>

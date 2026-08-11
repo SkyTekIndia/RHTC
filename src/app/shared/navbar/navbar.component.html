@@ -1,0 +1,172 @@
+<section class="header">
+  <nav
+    id="navbar-main"
+    class="navbar navbar-main navbar-expand-lg navbar-light"
+  >
+    <div class="container p-r bg-white">
+      <div class="bg-head"></div>
+      <div class="bg-head-1"></div>
+      <div class="d-flex">
+        <div
+          class="
+            navbar-brand
+            d-md-none d-none d-sm-none d-md-none d-lg-block d-xl-block
+          "
+        >
+          <img src="./assets/img/brand/ashoka.png" />
+        </div>
+        <div class="center-block">
+          <div class="site-title text-white text-center">
+            Rural Health Training Centre
+          </div>
+          <div class="site-address text-white text-center">
+            Najafgarh, New Delhi
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="navbar-brand d-sm-none d-none d-md-none d-lg-block d-xl-block"
+      >
+        <img src="./assets/img/brand/logo.png" />
+      </div>
+    </div>
+  </nav>
+  <div class="container bg-white text-center clearfix">
+    <div class="row">
+      <div class="col-md-12">
+        <span class="sub-title-main"
+          >DIRECTORATE GENERAL OF HEALTH SERVICES, Ministry of Health & Family
+          Welfare, Government of India</span
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<section class="nbp container bg-orange f-color-w">
+  <nav
+    id="navbar-main"
+    class="nav-main-section navbar navbar-expand-lg navbar-dark bg-default row"
+  >
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="navbar_global"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="navbar-collapse collapse"
+      id="navbar_global"
+      [ngbCollapse]="isCollapsed"
+    >
+      <div class="navbar-collapse-header">
+        <div class="col-md-12">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/home']">
+              <img src="./assets/img/brand/logo.png" />
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button
+              type="button"
+              class="navbar-toggler"
+              (click)="isCollapsed = !isCollapsed"
+              [attr.aria-expanded]="!isCollapsed"
+              aria-controls="navbar_global"
+            >
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav navbar-nav-hover align-items-md-center">
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold" [routerLink]="['/']"
+            >Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link font-weight-bold" [routerLink]="['/about']"
+            >About RHTC
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link font-weight-bold" [routerLink]="">Director’s message
+              <span class="sr-only">(current)</span>
+            </a>
+          </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link font-weight-bold" [routerLink]="['/facilities']"
+            >Organizational Structure
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <!--<li class="nav-item dropdown">
+            <a class="nav-link font-weight-bold" [routerLink]="['/phcs']">PHC’s
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>-->
+        <li class="nav-item dropdown">
+          <a class="nav-link font-weight-bold" [routerLink]="['/activities']"
+            >Activities
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold" [routerLink]="['/admissions']"
+            >Admissions
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link font-weight-bold" [routerLink]="['/phcs']"
+            >RHTC Hospital
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold" [routerLink]="['/academics']"
+            >Academics
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link font-weight-bold" [routerLink]="['/gallery']">Gallery
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold" [routerLink]="['/download']">Download
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>-->
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold" [routerLink]="['/contact']"
+            >Contact Us
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold" href="/assets/upload/Citizen Charter for website.pdf" target="_blank"
+            >Citizen Charter
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="f-s-14">
+        <marquee *ngIf="marqueeNews"> {{ marqueeNews }} </marquee>
+      </div>
+    </div>
+  </div>
+</section>

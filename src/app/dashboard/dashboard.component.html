@@ -1,0 +1,50 @@
+<div class="col-md-12">
+  <div class="container post-container">
+    <app-auth-navbar></app-auth-navbar>
+    <div class="container-content">
+      <h5 class="font-weight-bold py-1">Students List</h5>
+      <button type="button" class="btn btn-primary mt-2 mb-2 mr-2 float-right" *ngIf="isAdmin" (click)="generateRollNo()">Generate</button>
+      <button type="button" class="btn btn-primary mt-2 mb-2 float-right" (click)="OnExport()">Export CSV</button>
+      <form>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Roll No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Father Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Fee Paid</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="students">
+          <tr *ngFor="let student of students.list; index as i">
+            <th scope="row">{{ currentPageSize + i + 1 }}</th>
+            <td>{{ student.rollno }}</td>
+            <td>{{ student.basicdetails.name | titlecase }}</td>
+            <td>{{ student.basicdetails.fatherName | titlecase }}</td>
+            <td>{{ student.basicdetails.category }}</td>
+            <td *ngIf="(['UR', 'OBC'].includes(student.basicdetails.category))">
+              Rs 615
+            </td>
+            <td *ngIf="!(['UR', 'OBC'].includes(student.basicdetails.category))">
+              Rs 410
+            </td>
+            <td>{{ student.basicdetails.mobile }}</td>
+            <td *ngIf="student.rejected"> Rejected </td>
+            <td *ngIf="!student.rejected"> Accepted </td>
+            <td><a class="text-primary font-weight-bold" (click)="OnView(student._id)">View</a></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between p-2 pagination" *ngIf="page">
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="onPageChange($event)">
+          </ngb-pagination>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

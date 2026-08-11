@@ -1,0 +1,78 @@
+<div class="col-md-12">
+  <div class="container post-container">
+    <div class="text-center">
+      <h4><b>RURAL HEALTH TRAINING CENTRE, NAJAFGARH NEW DELHI-110 043</b></h4>
+      <h4>
+        <b>LADY READING HEALTH SCHOOL, BABA HINDU RAO, DELHI - 110 006</b>
+      </h4>
+      <u>
+        <h4>
+          <b>
+            COMBINED APPLICATION FORM FOR ANM DIPLOMA COURSE SESSION {{ currentYear }}-{{ currentYear + 2 }}
+          </b>
+        </h4>
+      </u>
+    </div>
+    <div class="container-content">
+      <div class="row">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="btn-group-vertical">
+                <button
+                  *ngFor="let reg of regTags"
+                  class="btn btn-1 btn-outline-primary"
+                  (click)="onRegChange(reg.id)"
+                  [ngClass]="{ active: selectedReg == reg.id }"
+                  type="button"
+                  [disabled]="isSideMenuDisabled(reg.id)"
+                >
+                  {{ reg.heading }}<br /><small>{{ reg.subheading }}</small>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <app-basicdetails
+                *ngIf="selectedReg == 'basicdetails'"
+                (formResponse)="getFormResponse($event)"
+                [draftForm]="formResponse.basicdetails"
+              >
+              </app-basicdetails>
+              <app-educationalqualifications
+                *ngIf="selectedReg == 'educationalqualifications'"
+                (formResponse)="getFormResponse($event)"
+                [draftForm]="formResponse.educationalqualifications"
+              >
+              </app-educationalqualifications>
+              <app-uploadphotosignature
+                *ngIf="selectedReg == 'uploadphotosignature'"
+                (formResponse)="getFormResponse($event)"
+                [draftForm]="formResponse.uploadphotosignature"
+              >
+              </app-uploadphotosignature>
+              <app-uploadotherdocuments
+                *ngIf="selectedReg == 'uploadotherdocuments'"
+                (formResponse)="getFormResponse($event)"
+                [draftForm]="formResponse.uploadotherdocuments"
+                [basicDetails]="basicDetails"
+              >
+              </app-uploadotherdocuments>
+              <app-applicationpreview
+                *ngIf="selectedReg == 'applicationpreview'"
+                (formResponse)="getFormResponse($event)"
+                [draftForm]="formResponse"
+              >
+              </app-applicationpreview>
+              <app-declarationpayment
+                *ngIf="selectedReg == 'declarationpayment'"
+                (formResponse)="getFormResponse($event)"
+                [draftForm]="formResponse"
+              >
+              </app-declarationpayment>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

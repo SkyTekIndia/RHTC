@@ -1,0 +1,50 @@
+<div class="text-left bg-secondary p-2">
+    <h5><b>UPLOAD PHOTO AND SIGNATURE</b></h5>
+</div>
+<form role="form col-md-12" [formGroup]="uploadPhotoSignatureForm" (ngSubmit)="onSubmit()">
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <div *ngIf="message" class="text-center text-danger mt-1">
+            <small>{{ message }}</small>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>Photo<span class="text-danger">*</span></label>
+                <input #photo type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(photo.files, 'photo')"
+                    [ngClass]="{ 'is-invalid': submitted && form.photo.errors }" />
+                <div class="text-info mt-1">
+                    <small>* Image should be less then 200KB</small>
+                </div>
+                <div *ngIf="submitted && form.photo.errors" class="text-danger mt-1">
+                    <small *ngIf="form.photo.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="photoURL | safe" width="150" height="150" *ngIf="photoURL">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>Signature<span class="text-danger">*</span></label>
+                <input #sign type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(sign.files, 'sign')"
+                    [ngClass]="{ 'is-invalid': submitted && form.sign.errors }" />
+                <div class="text-info mt-1">
+                    <small>* Image should be less then 200KB</small>
+                </div>
+                <div *ngIf="submitted && form.sign.errors" class="text-danger mt-1">
+                    <small *ngIf="form.sign.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="signURL | safe" width="150" height="150" *ngIf="signURL">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="message" class="text-center text-danger mt-1">
+        <small>{{ message }}</small>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-2">Save and Continue</button>
+    </div>
+</form>

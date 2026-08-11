@@ -1,0 +1,260 @@
+<main class="container-fluid bg-white">
+  <div class="row">
+    <!-- carousel -->
+    <div class="d-flex justify-content-center text-center">
+      <div class="p-0">
+        <ngb-carousel [showNavigationArrows]="false">
+          <ng-template ngbSlide *ngFor="let url of galleryImages; index as i">
+            <img class="img-fluid" [src]="url" alt="RHTC First slide">
+          </ng-template>
+          <!-- <ng-template ngbSlide>
+            <img class="img-fluid" src="assets/img/theme/slide-2.jpg" alt="RHTC Second slide">
+          </ng-template>
+          <ng-template ngbSlide>
+            <img class="img-fluid" src="assets/img/theme/slide-3.jpg" alt="RHTC Third slide">
+          </ng-template>
+          <ng-template ngbSlide>
+            <img class="img-fluid" src="assets/img/theme/slide-4.jpg" alt="RHTC Fourth slide">
+          </ng-template>
+          <ng-template ngbSlide>
+            <img class="img-fluid" src="assets/img/theme/slide-5.jpg" alt="RHTC Fifth slide">
+          </ng-template> -->
+        </ngb-carousel>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANM Admission button hidden on request
+  <section class="section ntbp" *ngIf="isRegAllowed">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center text-center">
+          <div class="text-center text-danger card">
+            <div class="text-danger card-body box-shadow">
+              <a href="https://rhtcreg.com/home/apply" target="_blank" style="animation: blink 1s infinite;">
+                <button type="submit" class="btn btn-default mt-2">
+                  ANM Admission - 2026-2028
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <section class="section ntbp" *ngIf="isAdmitDownloadAllowed">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center text-center">
+          <div class="text-center text-danger card">
+            <div class="text-danger card-body box-shadow">
+              <a [routerLink]="['/admit-card']">
+                <button type="submit" class="btn btn-default mt-2">
+                  DOWNLOAD ANM COURSE ADMIT CARD 2022-2024
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cooperatives + Azadi banner section hidden on request
+  <section class="section ntbp">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center text-center">
+          <div class="text-center text-danger card">
+            <div class="text-danger card-body">
+              <img src="./assets/img/theme/rhtc-1.png" alt="Rounded image" class="img-fluid" />
+              <img src="./assets/img/theme/rhtc-2.jpg" alt="Rounded image" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <section class="section ntbp">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <!-- <div class="card-header bg-orange f-color-w">
+            <div class="card-title">Awareness</div>
+          </div> -->
+          <div class="card-body">
+
+            <iframe id="ytplayer" type="text/html" width="700" height="360"
+              src="https://www.youtube.com/embed/cbqQx-gLZKk?controls=0&mode=opaque&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;wmode=transparent&origin=https://rhtcnajafgarh.in/"
+              frameborder="0"></iframe>
+            <!-- <ngb-tabset [justify]="'center'" class="
+                custom-tab-content
+                p-0
+                flex-column flex-md-row
+                font-weight-bold
+              " type="pills">
+              <ngb-tab title="English">
+                <ng-template ngbTabContent>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <a href="./assets/upload/FINAL_14_03_2020_ENg.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/FINAL_14_03_2020_ENg.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="./assets/upload/Poster_Corona_ad_Eng.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/Poster_Corona_ad_Eng.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="./assets/upload/ProtectivemeasuresEng.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/ProtectivemeasuresEng.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="./assets/upload/socialdistancingEnglish.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/socialdistancingEnglish.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Hindi">
+                <ng-template ngbTabContent>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <a href="./assets/upload/FINAL_14_03_2020_Hindi.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/FINAL_14_03_2020_Hindi.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="./assets/upload/Poster_Corona_ad_Hin.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/Poster_Corona_ad_Hin.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="./assets/upload/ProtectivemeasuresHin.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/ProtectivemeasuresHin.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="./assets/upload/socialdistancingHindi.pdf" target="_blank">
+                        <div class="card box-shadow">
+                          <div class="card-body p-0">
+                            <img src="./assets/img/theme/socialdistancingHindi.png" alt="Rounded image"
+                              class="img-fluid" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section ntbp">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-orange f-color-w">
+            <div class="card-title text-uppercase">Director</div>
+          </div>
+          <div class="card-body bg-black f-color-w">
+            <div class="director-content">
+              <div class="col-md-12 text-center">
+                <img src="./assets/img/theme/director-2026b.jpeg" alt="Rounded image"
+                  class="img-fluid rounded shadow director">
+                <div class="
+                    d-block
+                    text-uppercase
+                    font-weight-bold
+                    pt-2
+                    f-color-o
+                  ">
+                  Dr. B. K Kundu
+                  <!-- , <br />
+                  Director RHTC Najafgarh New Delhi -->
+                </div>
+                <div class="d-block font-weight-normal pt-1 f-color-w">
+                  <p class="mb-1">Designation: Director</p>
+                  <p class="mb-1">Email: director-rhtc@gov.in</p>
+                  <p class="mb-0">Contact: 011-20895149</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-orange f-color-w">
+            <div class="card-title">Latest News</div>
+          </div>
+          <div class="card-body bg-black f-color-w">
+            <div class="latest-news-content">
+              <ul class="list-unstyled mt-2">
+                <li class="py-1" *ngFor="let record of lastestNews; index as i">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <div class="date-block">
+                        <span class="date1">{{ i + 1 }}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">
+                        <a href="javascript:void(0);" (click)="OnView(record.associatedFile)"> {{ record?.title }} </a>
+                      </h6>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

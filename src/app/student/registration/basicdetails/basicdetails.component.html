@@ -1,0 +1,157 @@
+<div class="text-left bg-secondary p-2">
+    <h5><b>BASIC DETAILS</b></h5>
+</div>
+<form role="form" [formGroup]="basicDetailsForm" (ngSubmit)="onSubmit()">
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Name of the Candidate <span class="text-danger">*</span></label>
+        <input class="form-control" type="text" formControlName="name" oninput="this.value = this.value.toUpperCase()"
+            (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.name.touched || submitted) && form.name.errors }">
+        <div *ngIf="(form.name.touched || submitted) && form.name.errors" class="text-danger mt-1">
+            <small *ngIf="form.name.errors.required">This field is required<br></small>
+            <small *ngIf="form.name.errors.pattern">Name field must be valid<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Father’s Name <span class="text-danger">*</span></label>
+        <input class="form-control" type="text" formControlName="fatherName"
+            oninput="this.value = this.value.toUpperCase()" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.fatherName.touched || submitted) && form.fatherName.errors }">
+        <div *ngIf="(form.fatherName.touched || submitted) && form.fatherName.errors" class="text-danger mt-1">
+            <small *ngIf="form.fatherName.errors.required">This field is required<br></small>
+            <small *ngIf="form.fatherName.errors.pattern">Father Name field must be valid<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Mother’s Name <span class="text-danger">*</span></label>
+        <input class="form-control" type="text" formControlName="motherName"
+            oninput="this.value = this.value.toUpperCase()" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.motherName.touched || submitted) && form.motherName.errors }">
+        <div *ngIf="(form.motherName.touched || submitted) && form.motherName.errors" class="text-danger mt-1">
+            <small *ngIf="form.motherName.errors.required">This field is required<br></small>
+            <small *ngIf="form.motherName.errors.pattern">Mother Name field must be valid<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Category (UR/OBC/SC/ST/PH/EWSs)<span class="text-danger">*</span></label>
+        <div>
+            <small class="mb-2">(Note: OBC -Jat candidate will select UR only)</small>    
+        </div>
+        <select class="custom-select my-1 mr-sm-2" formControlName="category" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.category.touched || submitted) && form.category.errors }">
+            <option value="UR">UR</option>
+            <option value="OBC">OBC</option>
+            <option value="SC">SC</option>
+            <option value="ST">ST</option>
+            <option value="PH">PH</option>
+            <option value="EWSs">EWSs</option>
+        </select>
+        <div *ngIf="(form.category.touched || submitted) && form.category.errors" class="text-danger mt-1">
+            <small *ngIf="form.category.errors.required">This field is required<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Date of Birth as per Class 10th <span class="text-danger">*</span></label>
+        <input class="form-control" formControlName="dob" name="dp" (blur)="focus=false" type="text"
+            (dateSelect)="onDOBSelected($event)" placeholder="DD/MM/YYYY" autocomplete="off" (click)="d.toggle()"
+            ngbDatepicker #d="ngbDatepicker" [minDate]="minDate"
+            [ngClass]="{ 'is-invalid': (form.dob.touched || submitted) && form.dob.errors }">
+        <div *ngIf="(form.dob.touched || submitted) && form.dob.errors" class="text-danger mt-1">
+            <small *ngIf="form.dob.errors.gen">Your age must be greater than 16 years and less than 31 years<br></small>
+            <small *ngIf="form.dob.errors.obc">Your age must be greater than 16 years and less than 34 years<br></small>
+            <small *ngIf="form.dob.errors.scst">Your age must be greater than 16 years and less than 36
+                years<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Age ( As on 31st Dec. {{ currentYear }})<span class="text-danger">*</span></label>
+        <input class="form-control" formControlName="age" (blur)="focus=false" type="text"
+            [ngClass]="{ 'is-invalid': (submitted) && form.dob.errors }" readonly>
+        <div *ngIf="(submitted) && form.age.errors" class="text-danger mt-1">
+            <small>Your age must be valid or select DOB again<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Aadhar No. <span class="text-danger">*</span></label>
+        <input class="form-control" type="text" formControlName="aadhar" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.aadhar.touched || submitted) && form.aadhar.errors }"
+            mask="0000 0000 0000">
+        <div *ngIf="(form.aadhar.touched || submitted) && form.aadhar.errors" class="text-danger mt-1">
+            <small *ngIf="form.aadhar.errors.required">This field is required<br></small>
+            <small *ngIf="form.aadhar.errors">Aadhar No. must be valid<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Mobile No <span class="text-danger">*</span></label>
+        <input class="form-control" type="text" formControlName="mobile" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.mobile.touched || submitted) && form.mobile.errors }" prefix="+91"
+            mask=" 0000000000">
+        <div *ngIf="(form.mobile.touched || submitted) && form.mobile.errors" class="text-danger mt-1">
+            <small *ngIf="form.mobile.errors.required">This field is required<br></small>
+            <small *ngIf="form.mobile.errors">Mobile No. must be valid<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Alternate Mobile No</label>
+        <input class="form-control" type="text" formControlName="alternateMobile" (focus)="focus=true"
+            (blur)="focus=false" prefix="+91" mask=" 0000000000">
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Identification Mark </label>
+        <input class="form-control" type="text" formControlName="identificationMarks" (focus)="focus=true"
+            (blur)="focus=false">
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Address of Residence 1 <span class="text-danger">*</span></label>
+        <input class="form-control" type="text" formControlName="address1" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.address1.touched || submitted) && form.address1.errors }">
+        <div *ngIf="(form.address1.touched || submitted) && form.address1.errors" class="text-danger mt-1">
+            <small *ngIf="form.address1.errors.required">This field is required<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Address of Residence 2 <span class="text-danger">*</span></label>
+        <input class="form-control" formControlName="address2" type="text" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.address2.touched || submitted) && form.address2.errors }">
+        <div *ngIf="(form.address2.touched || submitted) && form.address2.errors" class="text-danger mt-1">
+            <small *ngIf="form.address2.errors.required">This field is required<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>State of Domicile <span class="text-danger">*</span></label>
+        <select class="custom-select my-1 mr-sm-2" formControlName="stateofDomicile" (focus)="focus=true"
+            (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.stateofDomicile.touched || submitted) && form.stateofDomicile.errors }">
+            <option selected>Delhi</option>
+        </select>
+        <div *ngIf="(form.stateofDomicile.touched || submitted) && form.stateofDomicile.errors"
+            class="text-danger mt-1">
+            <small *ngIf="form.stateofDomicile.errors.required">This field is required<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Pincode <span class="text-danger">*</span></label>
+        <input class="form-control" formControlName="pincode" type="text" (focus)="focus=true" (blur)="focus=false"
+            [ngClass]="{ 'is-invalid': (form.pincode.touched || submitted) && form.pincode.errors }" mask="000000">
+        <div *ngIf="(form.pincode.touched || submitted) && form.pincode.errors" class="text-danger mt-1">
+            <small *ngIf="form.pincode.errors.required">This field is required<br></small>
+            <small *ngIf="form.pincode.errors">Pincode must be valid<br></small>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <label>Email ID <span class="text-danger">*</span></label>   
+        <div>
+            <small class="mb-2">Enter correct email id to get mail for Application Id</small>    
+        </div> 
+        <input type="text" class="form-control" formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid': (form.email.touched || submitted) && form.email.errors }" placeholder="Email"
+            (focus)="focus=true" (blur)="focus=false">
+        <div *ngIf="(form.email.touched || submitted) && form.email.errors" class="text-danger mt-1">
+            <small *ngIf="form.email.errors.required">This field is required<br></small>
+            <small *ngIf="form.email.errors.email">Email must be a valid email address<br></small>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-4" [disabled]="isRegistrationAllowed">Save and Continue</button>
+    </div>
+</form>

@@ -1,0 +1,152 @@
+<div class="text-left bg-secondary p-2">
+    <b>APPLICATION PREVIEW</b>
+</div>
+<form role="form" [formGroup]="applicationPreviewForm" (ngSubmit)="onSubmit()" *ngIf="this.draftForm">
+    <h5 class="text-primary mt-2 mb-2"><b>Basic Details</b></h5>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>Name of candidate: <b>{{ this.draftForm.basicdetails.name }}</b></td>
+                    <td>Father’s Name: <b>{{ this.draftForm.basicdetails.fatherName }}</b></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:
+                        <b>{{ this.draftForm.basicdetails.dob.day }}/{{ this.draftForm.basicdetails.dob.month }}/{{ this.draftForm.basicdetails.dob.year }}</b>
+                    </td>
+                    <td>Mother’s Name: <b>{{ this.draftForm.basicdetails.motherName }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Mobile No: <b>{{ this.draftForm.basicdetails.mobile }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Identification Mark: <b>{{ this.draftForm.basicdetails.identificationMarks }}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Address Line 1: <b>{{ this.draftForm.basicdetails.address1 }}</b></td>
+                </tr>
+                <tr>
+                    <td>Category: <b>{{ this.draftForm.basicdetails.category }}</b></td>
+                    <td>Aadhar Number: <b>{{ this.draftForm.basicdetails.aadhar }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Address Line 2: <b>{{ this.draftForm.basicdetails.address2 }}</b></td>
+                </tr>
+                <tr>
+                    <td>State of Domicile: <b>{{ this.draftForm.basicdetails.stateofDomicile }}</b></td>
+                    <td>Pincode: <b>{{ this.draftForm.basicdetails.pincode }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Email ID: <b>{{ this.draftForm.basicdetails.email }}</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h5 class="text-primary mt-2 mb-2"><b>Educational Qualifications</b></h5>
+    <h6 class="text-primary bg-secondary p-2"><b>Details of Education - Class X</b></h6>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td colspan="2">Educational Qualifications: <b>Class X or Equivalent</b></td>
+                    <td>Pass Status: <b>Passed</b></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Board Name: <b>{{ this.draftForm.educationalqualifications.tenth.board }}</b></td>
+                </tr>
+                <tr>
+                    <td>Year of Passing: <b>{{ this.draftForm.educationalqualifications.tenth.passingYear }}</b></td>
+                    <td>Marks Obtained: <b>{{ this.draftForm.educationalqualifications.tenth.marksObtained }}</b></td>
+                    <td>Maximum Marks: <b>{{ this.draftForm.educationalqualifications.tenth.maximumMarks }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Percentage (%) Marks:
+                        <b>{{ this.draftForm.educationalqualifications.tenth.percentageMarks }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="3">School Name & Location:
+                        <b>{{ this.draftForm.educationalqualifications.tenth.schoolNameAndLocation }}</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h6 class="text-primary bg-secondary p-2"><b>Details of Education - Class XII</b></h6>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td colspan="2">Educational Qualifications: <b>Class XII or Equivalent</b></td>
+                    <td>Pass Status: <b>{{ this.draftForm.educationalqualifications.twelfth.status }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Board Name: <b>{{ this.draftForm.educationalqualifications.twelfth.board }}</b></td>
+                </tr>
+                <tr>
+                    <td>Year of Passing: <b>{{ this.draftForm.educationalqualifications.twelfth.passingYear }}</b></td>
+                    <td>Marks Obtained: <b>{{ this.draftForm.educationalqualifications.twelfth.marksObtained }}</b></td>
+                    <td>Maximum Marks: <b>{{ this.draftForm.educationalqualifications.twelfth.maximumMarks }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Percentage (%) Marks:
+                        <b>{{ this.draftForm.educationalqualifications.twelfth.percentageMarks }}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="3">School Name & Location:
+                        <b>{{ this.draftForm.educationalqualifications.twelfth.schoolNameAndLocation }}</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h6 class="text-primary bg-secondary p-2 mt-1"><b>Photo and Signature</b></h6>
+    <div class="d-flex justify-content-center border mt-1">
+        <div class="p-2" *ngIf="photoURL">
+            <img [src]="photoURL | safe" width="100" height="100" class="rounded"><br>
+            <small><b>Photo</b></small>
+        </div>
+        <div class="p-2" *ngIf="signURL">
+            <img [src]="signURL | safe"  width="100" height="100" class="rounded"><br>
+            <small><b>Signature</b></small>
+        </div>
+    </div>
+    <h6 class="text-primary bg-secondary p-2 mt-2"><b>Other documents</b></h6>
+    <div class="d-flex justify-content-center border mt-1 col-md-12">
+        <div class="p-2 col-md-3" *ngIf="aadharCertificateURL">
+            <img [src]="aadharCertificateURL | safe" width="100" height="100" class="rounded"><br>
+            <small><b>ID - Aadhar Card</b></small>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center border mt-1 col-md-12">
+        <div class="p-2 col-md-3" *ngIf="tenthCertificateURL">
+            <img [src]="tenthCertificateURL | safe" width="100" height="100" class="rounded"><br>
+            <small><b>10th Marks sheet</b></small>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center border mt-1 col-md-12">
+        <div class="p-2 col-md-3" *ngIf="twelfthCertificateURL">
+            <img [src]="twelfthCertificateURL | safe" width="100" height="100" class="rounded"><br>
+            <small><b>12th/Admit Card</b></small>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center border mt-1 col-md-12">
+        <div class="p-2 col-md-3" *ngIf="casteCertificateURL">
+            <img [src]="casteCertificateURL | safe" width="100" height="100" class="rounded"><br>
+            <small><b>Caste Certificate</b></small>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center border mt-1 col-md-12">
+        <div class="p-2 col-md-3" *ngIf="characterCertificateURL">
+            <img [src]="characterCertificateURL | safe" width="100" height="100" class="rounded"><br>
+            <small><b>Character Certificate</b></small>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center border mt-1 col-md-12">
+        <div class="p-2 col-md-3" *ngIf="twelfthAdCertificateURL">
+            <img [src]="twelfthAdCertificateURL | safe" width="100" height="100" class="rounded"><br>
+            <small><b>12th Certificate</b></small>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-4">Continue</button>
+    </div>
+</form>

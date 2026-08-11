@@ -1,0 +1,117 @@
+<div class="text-left bg-secondary p-2">
+    <h5><b>UPLOAD OTHER DOCUMENTS</b></h5>
+</div>
+<form role="form col-md-12" [formGroup]="uploadOtherDocumentsForm" (ngSubmit)="onSubmit()">
+    <div class="form-group" [ngClass]="{'focused':focus === true}">
+        <div *ngIf="message" class="text-center text-danger mt-1">
+            <small>{{ message }}</small>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>Upload ID - Aadhar Card<span class="text-danger">*</span></label>
+                <input #aadharCertificate type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(aadharCertificate.files, 'aadharCertificate')"
+                    [ngClass]="{ 'is-invalid': submitted && form.aadharCertificate.errors }" />
+                <div class="text-info mt-1">
+                    <small>* Both sides of Aadhar card image should be less then 500KB</small>
+                </div>
+                <div *ngIf="submitted && form.aadharCertificate.errors" class="text-danger mt-1">
+                    <small *ngIf="form.aadharCertificate.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="aadharCertificateURL | safe" width="150" height="150" *ngIf="aadharCertificateURL">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>Upload 10th Marks sheet<span class="text-danger">*</span></label>
+                <input #tenthCertificate type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(tenthCertificate.files, 'tenthCertificate')"
+                    [ngClass]="{ 'is-invalid': submitted && form.tenthCertificate.errors }" />
+                <div class="text-info mt-1">
+                    <small>* Image should be less then 500KB</small>
+                </div>
+                <div *ngIf="submitted && form.tenthCertificate.errors" class="text-danger mt-1">
+                    <small *ngIf="form.tenthCertificate.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="tenthCertificateURL | safe" width="150" height="150" *ngIf="tenthCertificateURL">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>Upload 12th Mark sheet / 12th Admit Card <span class="text-danger">*</span></label>
+                <input #twelfthCertificate type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(twelfthCertificate.files, 'twelfthCertificate')"
+                    [ngClass]="{ 'is-invalid': submitted && form.twelfthCertificate.errors }" />
+                <div class="text-info mt-1">
+                    <small>* Image should be less then 500KB</small>
+                </div>
+                <div *ngIf="submitted && form.twelfthCertificate.errors" class="text-danger mt-1">
+                    <small *ngIf="form.twelfthCertificate.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="twelfthCertificateURL | safe" width="150" height="150" *ngIf="twelfthCertificateURL">
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>Upload Character Certificate / 12th Admit Card<span class="text-danger">*</span></label>
+                <input #characterCertificate type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(characterCertificate.files, 'characterCertificate')"
+                    [ngClass]="{ 'is-invalid': submitted && form.characterCertificate.errors }" />
+                <div class="text-info mt-1">
+                    <small>* Image should be less then 500KB</small>
+                </div>
+                <div *ngIf="submitted && form.characterCertificate.errors" class="text-danger mt-1">
+                    <small *ngIf="form.characterCertificate.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="characterCertificateURL | safe" width="150" height="150" *ngIf="characterCertificateURL">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>Caste Certificate for SC/ST/OBC/
+                    PH/EWSs (if applicable)</label>
+                <input #casteCertificate type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(casteCertificate.files, 'casteCertificate')" />
+                <div class="text-info mt-1">
+                    <small>* Image should be less then 500KB</small>
+                </div>
+                <div *ngIf="submitted && form.casteCertificate.errors" class="text-danger mt-1">
+                    <small *ngIf="form.casteCertificate.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="casteCertificateURL | safe" width="150" height="150" *ngIf="casteCertificateURL">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <label>12th Certificate (if applicable) / Domicile Certificate</label>
+                <input #twelfthAdCertificate type="file" class="form-control" (focus)="focus=true" (blur)="focus=false"
+                    accept='image/*' (change)="preview(twelfthAdCertificate.files, 'twelfthAdCertificate')" />
+                <div class="text-info mt-1">
+                    <small>* Image should be less then 500KB</small>
+                </div>
+                <div *ngIf="submitted && form.twelfthAdCertificate.errors" class="text-danger mt-1">
+                    <small *ngIf="form.twelfthAdCertificate.errors.required">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <img [src]="twelfthAdCertificateURL | safe" width="150" height="150" *ngIf="twelfthAdCertificateURL">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="message" class="text-center text-danger mt-1">
+        <small>{{ message }}</small>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-2">Save and Continue</button>
+    </div>
+</form>

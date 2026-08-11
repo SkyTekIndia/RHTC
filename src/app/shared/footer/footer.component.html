@@ -1,0 +1,31 @@
+<footer class="footer" [ngClass]="{'has-cards': getPath()!=='/user-profile' && getPath()!=='/register' && getPath()!=='/login'}">
+  <div class="container bg-black f-color-w">
+  <div class="row">
+  <div class="p-15 bg-orange f-top">
+  </div>
+  </div>
+    
+      <div class="row p-10">
+        <div class="col-md-6 col-sm-6">
+          <div class="copyright font-weight-bold">
+            &copy; {{test | date: 'yyyy'}}
+            <a [routerLink]="['/']" target="_blank"  >RHTC Najafgarh, New Delhi</a>.
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <ul class="nav nav-footer justify-content-end">
+            <li class="nav-item">
+              <a [routerLink]="['/']" class="nav-link font-weight-bold">RHTC</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/privacy']" class="nav-link font-weight-bold">Privacy Policy</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/contact']" class="nav-link font-weight-bold">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+  </div>
+</footer>

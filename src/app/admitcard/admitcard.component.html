@@ -1,0 +1,61 @@
+<main class="mt--4">
+  <section class="section section-shaped section-lg mt--4">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 topBy50 bottomBy70">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-black pb-4">
+              <div class="text-black text-center mb-2">
+                <strong>ADMIT CARD</strong>
+              </div>
+              <div class="text-center text-black font-weight-bold mb-1">
+                <small><b>Please fill details to download your admit card slip for session ({{ currentYear }} - {{ currentYear + 2 }})</b></small>
+              </div>
+            </div>
+            <div class="card-body px-lg-5 py-lg-5">
+              <form role="form" [formGroup]="admitCardForm" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">                  
+                  <label>Aadhar Number <span class="text-danger">*</span></label>
+                  <div class="input-group input-group-alternative">
+                    <input class="form-control" formControlName="aadhar" type="text"
+                      (focus)="focus=true" (blur)="focus=false"
+                      [ngClass]="{ 'is-invalid': ((submitted || form.aadhar.touched)  && form.aadhar.invalid) }"
+                      mask="0000 0000 0000">
+                  </div>
+                  <div *ngIf="(submitted || form.aadhar.touched) && form.aadhar.errors" class="text-danger mt-1">
+                    <small *ngIf="form.aadhar.errors.required">Aadhar Number is required<br></small>
+                    <small *ngIf="form.aadhar.errors">Aadhar Number must be valid<br></small>
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'focused':focus === true}">
+                  <label>Date of Birth as per Class 10th <span class="text-danger">*</span></label>
+                  <input class="form-control" formControlName="dob" name="dp" 
+                      (blur)="focus=false" type="text" autocomplete="off"
+                      (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate"
+                      [ngClass]="{ 'is-invalid': submitted && form.dob.errors }">
+                  <div *ngIf="submitted && form.dob.errors" class="text-danger mt-1">
+                      <small>Your age must be valid and greater than 12 years<br></small>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4" [disabled]="!isAdmitDownloadAllowed">Submit</button>
+                  <p *ngIf="!isAdmitDownloadAllowed" class="text-danger">Note: ANM Course download admit card feature will be available from 14th Aug. 2022 to 20th Aug 2022 Midnight</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

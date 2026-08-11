@@ -1,0 +1,193 @@
+<div class="col-md-12">
+    <div class="container post-container">
+        <app-auth-navbar></app-auth-navbar>
+        <div class="container-content">
+            <button type="button" class="btn btn-primary mt-2 mb-4 float-left" (click)="backToDashBoard()">Back</button>
+            <button type="button" class="btn btn-primary mt-2 mb-4 float-right" (click)="printApplication()">Print</button>
+            <div class="text-center bg-secondary p-2">
+                <h4>Application View</h4>
+            </div>
+            <form role="form" [formGroup]="applicationViewForm" (ngSubmit)="onSubmit()" *ngIf="student">
+                <h5 class="text-primary mt-2 mb-2"><b>Basic Details</b></h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Name of candidate: <b>{{ student.basicdetails.name }}</b></td>
+                                <td>Father’s Name: <b>{{ student.basicdetails.fatherName }}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Date of Birth:
+                                    <b>{{ student.basicdetails.dob.day }}/{{ student.basicdetails.dob.month }}/{{ student.basicdetails.dob.year }}</b>
+                                </td>
+                                <td>Mother’s Name: <b>{{ student.basicdetails.motherName }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Mobile No: <b>{{ student.basicdetails.mobile }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Identification Mark:
+                                    <b>{{ student.basicdetails.identificationMarks }}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Address Line 1: <b>{{ student.basicdetails.address1 }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Address Line 2: <b>{{ student.basicdetails.address2 }}</b></td>
+                            </tr>
+                            <tr>
+                                <td>State of Domicile: <b>{{ student.basicdetails.stateofDomicile }}</b></td>
+                                <td>Pincode: <b>{{ student.basicdetails.pincode }}</b></td>
+                            </tr>                            
+                            <tr>
+                                <td>Category: <b>{{ student.basicdetails.category }}</b></td>
+                                <td>Aadhar Number: <b>{{ student.basicdetails.aadhar }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Email ID: <b>{{ student.basicdetails.email }}</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h5 class="text-primary mt-2 mb-2"><b>Educational Qualifications</b></h5>
+                <h6 class="text-primary bg-secondary p-2"><b>Details of Education - Class X</b></h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Educational Qualifications: <b>Class X or Equivalent</b></td>
+                                <td>Pass Status: <b>Passed</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Board Name:
+                                    <b>{{ student.educationalqualifications.tenth.board }}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Year of Passing:
+                                    <b>{{ student.educationalqualifications.tenth.passingYear }}</b></td>
+                                <td>Marks Obtained:
+                                    <b>{{ student.educationalqualifications.tenth.marksObtained }}</b></td>
+                                <td>Maximum Marks:
+                                    <b>{{ student.educationalqualifications.tenth.maximumMarks }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Percentage (%) Marks:
+                                    <b>{{ student.educationalqualifications.tenth.percentageMarks }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">School Name & Location:
+                                    <b>{{ student.educationalqualifications.tenth.schoolNameAndLocation }}</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-primary bg-secondary p-2"><b>Details of Education - Class XII</b></h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Educational Qualifications: <b>Class XII or Equivalent</b></td>
+                                <td>Pass Status: <b>{{ student.educationalqualifications.twelfth.status }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Board Name:
+                                    <b>{{ student.educationalqualifications.twelfth.board }}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Year of Passing:
+                                    <b>{{ student.educationalqualifications.twelfth.passingYear }}</b></td>
+                                <td>Marks Obtained:
+                                    <b>{{ student.educationalqualifications.twelfth.marksObtained }}</b></td>
+                                <td>Maximum Marks:
+                                    <b>{{ student.educationalqualifications.twelfth.maximumMarks }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Percentage (%) Marks:
+                                    <b>{{ student.educationalqualifications.twelfth.percentageMarks }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">School Name & Location:
+                                    <b>{{ student.educationalqualifications.twelfth.schoolNameAndLocation }}</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-primary bg-secondary p-2 mt-1"><b>Photo and Signature</b></h6>
+                <div class="d-flex justify-content-center border mt-1">
+                    <div class="p-2" *ngIf="photoURL">
+                        <img (click)="viewInZoom(photoURL)" [src]="photoURL | safe" width="100" height="100"
+                            class="rounded"><br>
+                        <small><b>Photo</b></small>
+                    </div>
+                    <div class="p-2" *ngIf="signURL">
+                        <img (click)="viewInZoom(signURL)" [src]="signURL | safe" width="100" height="100"
+                            class="rounded"><br>
+                        <small><b>Signature</b></small>
+                    </div>
+                </div>
+                <h6 class="text-primary bg-secondary p-2 mt-2"><b>Other documents</b></h6>
+                <div class="d-flex justify-content-center border mt-1 col-md-12">
+                    <div class="p-2 col-md-3" (click)="viewInZoom(aadharCertificateURL)" *ngIf="aadharCertificateURL">
+                        <img [src]="aadharCertificateURL | safe" width="100" height="100" class="rounded"><br>
+                        <small><b>ID - Aadhar Card</b></small>
+                    </div>
+                    <div class="p-2 col-md-3" *ngIf="tenthCertificateURL">
+                        <img (click)="viewInZoom(tenthCertificateURL)" [src]="tenthCertificateURL | safe" width="100"
+                            height="100" class="rounded"><br>
+                        <small><b>10th Marks sheet</b></small>
+                    </div>
+                    <div class="p-2 col-md-3" *ngIf="twelfthCertificateURL">
+                        <img (click)="viewInZoom(twelfthCertificateURL)" [src]="twelfthCertificateURL | safe"
+                            width="100" height="100" class="rounded"><br>
+                        <small><b>12th/Admit Card</b></small>
+                    </div>
+                    <div class="p-2 col-md-3" *ngIf="casteCertificateURL">
+                        <img (click)="viewInZoom(casteCertificateURL)" [src]="casteCertificateURL | safe" width="100"
+                            height="100" class="rounded"><br>
+                        <small><b>Caste Certificate</b></small>
+                    </div>
+                    <div class="p-2 col-md-3" *ngIf="characterCertificateURL">
+                        <img (click)="viewInZoom(characterCertificateURL)" [src]="characterCertificateURL | safe" width="100"
+                            height="100" class="rounded"><br>
+                        <small><b>Character Certificate</b></small>
+                    </div>
+                    <div class="p-2 col-md-3" *ngIf="twelfthAdCertificateURL">
+                        <img (click)="viewInZoom(twelfthAdCertificateURL)" [src]="twelfthAdCertificateURL | safe" width="100"
+                            height="100" class="rounded"><br>
+                        <small><b>12th Certificate</b></small>
+                    </div>
+                </div>
+                <div class="row" *ngIf="!student.rejected">
+                    <div class="col-md-12 d-flex justify-content-center mt-3" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Rejection Reason <span class="text-danger">*</span></label>
+                                <textarea class="form-control" formControlName="rejectedReason" type="text" autocomplete="off"
+                                    [ngClass]="{ 'is-invalid': form.rejectedReason.errors }">
+                            </textarea>
+                                <div *ngIf="form.rejectedReason.errors" class="text-danger mt-1">
+                                    <small>
+                                        This field is required
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="student.rejectedReason" class="text-center">
+                    <h5 class="text-primary mt-2 mb-2"><b>Rejected Reason:</b></h5>
+                    <p class="mt-2 mb-2">{{ student.rejectedReason }}</p>
+                </div>
+                <div class="text-center col-md-12">
+                    <a class="btn btn-primary mt-4" [routerLink]="['/dashboard']">Back</a>
+                    <button type="submit" class="btn btn-primary mt-4" *ngIf="!student.rejected">Mark as
+                        Rejected</button>
+                    <button type="submit" class="btn btn-primary mt-4" *ngIf="student.rejected">Mark as
+                        Accepted</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="col-md-12">
+    <div class="container post-container">
+        <app-auth-navbar></app-auth-navbar>
+        <div class="container-content">
+            <div class="row">
+                <div class="col-md-12 mt-2">
+                    <button type="button" (click)="onBack()" class="btn btn-primary mt-2 mb-2 float-left">Back</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mt-2">
+                    <div class="text-left bg-secondary p-2">
+                        <h5><b>Add Latest News</b></h5>
+                    </div>
+                    <form role="form col-md-12" [formGroup]="lastestNewsForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group" [ngClass]="{'focused':focus === true}">
+                            <div class="row">
+                                <div class="col-md-12 mt-2">
+                                    <label>News Title<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" formControlName="title" (focus)="focus=true"
+                                        (blur)="focus=false" accept='image/*,application/pdf'
+                                        [ngClass]="{ 'is-invalid': submitted && form.title.errors }" />
+                                    <div *ngIf="submitted && form.title.errors" class="text-danger mt-1">
+                                        <small *ngIf="form.title.errors.required">This field is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mt-2">
+                                    <label>Upload File</label>
+                                    <input type="file" class="form-control" #associatedFile
+                                        (change)="preview(associatedFile.files, 'associatedFile')" (focus)="focus=true"
+                                        (blur)="focus=false" accept='image/*,application/pdf' />
+                                    <div class="text-info mt-1">
+                                        <small>* Only Images and Pdf are allowed</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mt-2">Save and Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
